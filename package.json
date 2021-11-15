@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "jest",
-    "build:doc": "jsdoc"
+    "jsdoc": "jsdoc"
   },
   "devDependencies": {
     "jest": "^27.3.1",
