@@ -8,6 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Build
+      uses: andstor/jsdoc-action@v1
+      with:
+        source_dir: ./src
+        recurse: true
+        output_dir: ./out
+
+
     - uses: actions/checkout@v1
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.3
