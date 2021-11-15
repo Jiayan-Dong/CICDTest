@@ -20,6 +20,8 @@ jobs:
 
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.3
