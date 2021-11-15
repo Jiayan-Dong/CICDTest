@@ -18,6 +18,13 @@ jobs:
         recurse: true
         output_dir: ./out
 
+    - name: Commit files
+      run: |
+        git config --local user.email "jid001@ucsd.edu"
+        git config --local user.name "Jiayan Dong"
+        git add out
+        git commit -m "JSDOC"
+
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
       with:
