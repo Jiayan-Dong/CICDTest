@@ -1,12 +1,21 @@
 {
-    "source": {
-      "include": [ "src/" ],
-      "exclude": [ "src/libs" ]
-    },
-    "opts": {
+  "tags": {
+      "allowUnknownTags": true
+  },
+  "source": {
+      "include": ["./src"]
+  },
+  "plugins": [],
+  "opts": {
       "encoding": "utf8",
-      "destination": "./docs/",
-      "recurse": true,
-      "verbose": true
-    }
+      "destination": "./doc/doc-page/",
+      "recurse": true
+  },
+  "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": false,
+      "default": {
+          "outputSourceFiles": true
+      }
+  }
 }
