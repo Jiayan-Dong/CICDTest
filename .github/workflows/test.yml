@@ -1,6 +1,9 @@
 name: Tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -24,15 +27,8 @@ jobs:
         recurse: true
         output_dir: ./out
 
-    - name: Commit files
-      run: |
-        git config --local user.email "jid001@ucsd.edu"
-        git config --local user.name "Jiayan Dong"
-        git add out
-        git commit -m "JSDOC"
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        branch: ${{ github.ref }}
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: ./out
