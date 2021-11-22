@@ -1,9 +1,6 @@
 name: Tests
 
-on:
-  push:
-    branches:
-      - main
+on: pull_request
 
 jobs:
   build:
@@ -14,8 +11,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+        ref: ${{ github.head_ref }}
 
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.3
@@ -27,8 +23,11 @@ jobs:
         recurse: true
         output_dir: ./out
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_dir: ./out
+    - name: Commit files and push
+      run: |
+        git config --local user.email "jid001@ucsd.edu"
+        git config --local user.name "Jiayan Dong"
+        git remote set-url origin https://x-access-token:${{ secrets.PUSH_KEY }}@github.com/${{ github.repository }}
+        git add out
+        git commit -m "JSDOC"
+        git push
