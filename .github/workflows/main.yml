@@ -12,6 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: NPM
+        run: |
+          npm install -g npm@6  
+          npm ci
+          npm -v
+          node -v
+
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
