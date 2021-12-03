@@ -15,8 +15,11 @@ jobs:
 
     - name: NPM
       run: |
+<<<<<<< HEAD
         npm install -g npm@6  
         npm ci
+=======
+>>>>>>> 919a57f0a5ef1a67a1230652f1e933297dc51fc0
         npm -v
         node -v
     
